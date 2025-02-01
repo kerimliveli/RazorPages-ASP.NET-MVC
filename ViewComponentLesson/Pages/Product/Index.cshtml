@@ -1,0 +1,76 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model ViewComponentLesson.Pages.Product.IndexModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="m-5 text-danger">The day is @Model.Message</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <th scope="row">@item.Name</th>
+                <th scope="row">@item.Price</th>
+                <th scope="row">
+                    <form method="post" asp-page-handler="Edit">
+                        <div class="mb-3">
+                            <label class="form-label">Product Name</label>
+                            <input asp-for="Product.Name" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Product Price</label>
+                            <input asp-for="Product.Price" type="number" class="form-control" />
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary" >Edit</button>
+                    </form>
+                    
+                    
+                    
+                   
+                <th scope="row">
+                    <form method="post" >
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn btn-outline-danger" asp-page-handler="Delete">Delete</button>
+                    
+                    </form>
+                    
+                    
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<form class="col-5" method="post">
+    <div class="mb-3">
+        <label class="form-label">Product Name</label>
+        <input asp-for="Product.Name" type="text" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Product Price</label>
+        <input asp-for="Product.Price" type="number" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add New Product</button>
+
+
+</form>
+
+
+
