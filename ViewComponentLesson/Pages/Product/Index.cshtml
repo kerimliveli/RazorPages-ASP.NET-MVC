@@ -26,7 +26,8 @@
                 <th scope="row">@item.Name</th>
                 <th scope="row">@item.Price</th>
                 <th scope="row">
-                    <form method="post" asp-page-handler="Edit">
+                    <form method="post">
+                        <input type="hidden" asp-for="Product.Id" /> 
                         <div class="mb-3">
                             <label class="form-label">Product Name</label>
                             <input asp-for="Product.Name" class="form-control" />
@@ -35,19 +36,19 @@
                             <label class="form-label">Product Price</label>
                             <input asp-for="Product.Price" type="number" class="form-control" />
                         </div>
-
-                        <button type="submit" class="btn btn-outline-primary" >Edit</button>
+                        <button type="submit" class="btn btn-outline-primary" asp-page-handler="Edit">Edit</button>
                     </form>
                     
                     
                     
                    
                 <th scope="row">
-                    <form method="post" >
-                        <input type="hidden" name="id" value="@item.Id" />
+                    <form method="post">
+                        <input type="hidden" name="Id" value="@item.Id" />
                         <button type="submit" class="btn btn-outline-danger" asp-page-handler="Delete">Delete</button>
-                    
                     </form>
+
+
                     
                     
             </tr>

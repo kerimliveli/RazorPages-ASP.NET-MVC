@@ -27,7 +27,7 @@ public class IndexModel(AppDbContext context) : PageModel
         return RedirectToPage("Index");
     }
 
-    public IActionResult Edit(int Id)
+    public IActionResult OnPostEdit(int Id)
     {
         var product = _context.Products.FirstOrDefault(p => p.Id == Id);
         product.Name = Product.Name;
@@ -39,7 +39,7 @@ public class IndexModel(AppDbContext context) : PageModel
 
 
 
-    public IActionResult OnDelete(int Id)
+    public IActionResult OnPostDelete(int Id)
     {
         var product = _context.Products.FirstOrDefault(p => p.Id == Id);
         _context.Products.Remove(product);
